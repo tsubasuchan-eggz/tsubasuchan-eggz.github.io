@@ -1,8 +1,30 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Tsubasuchan</title>
-	<style>
-	body,html {
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>アニメーション終了後にサイトを表示させる方法</title>
+<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+
+<script>
+$(function(){
+$(".mainSite").css("display", "none");
+
+setTimeout(function() {
+    $('.anime').fadeOut();
+	}, 3800);
+});
+
+$(function(){
+    $(".mainSite").css({opacity:'0'});
+    setTimeout(function(){
+    $(".mainSite").css("display", "block");
+    $(".mainSite").stop().animate({opacity:'1'},1000);//1秒かけてコンテンツを表示
+    },3800);//約4秒後に
+});
+</script>
+
+
+<style>
+body,html {
 	width: 100%;
 	height: 100%;
 	margin: 0;
@@ -46,7 +68,6 @@
 <body>
 <div class="anime">
 <img src="http://smile-design.bz/tight/blog/anai/bicycle-gif.gif"/>
-
 </div>
 
 <div class="mainSite">
